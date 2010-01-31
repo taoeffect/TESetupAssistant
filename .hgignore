@@ -1,0 +1,7 @@
+syntax: glob
+
+**/build/**/*
+*.mode1v3
+*.pbxuser
+*.o
+*~
