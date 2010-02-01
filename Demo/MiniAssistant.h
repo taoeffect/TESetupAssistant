@@ -26,7 +26,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TESetupAssistant.h"
 
-@interface MiniAssistant : BaseAssistant {
+@interface MiniAssistant : TEBaseAssistant {
 	IBOutlet NSTextField *textField;
 }
 

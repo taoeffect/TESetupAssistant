@@ -25,7 +25,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TESetupAssistant.h"
 
-@interface LicenseAssistant : BaseAssistant {
+@interface LicenseAssistant : TEBaseAssistant {
 	IBOutlet NSPanel *licenseSheet;
 	IBOutlet NSTextView *textView;
 	IBOutlet NSButton *quitButton;

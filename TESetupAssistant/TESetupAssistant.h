@@ -35,7 +35,7 @@
 // BaseAssistant is configured by default to behave as if it has only one view
 // if your assistant has multiple views you probably want to override the
 // last three methods: startWithView, nextPressed, and prevPressed
-@interface BaseAssistant : NSObject {
+@interface TEBaseAssistant : NSObject {
 	IBOutlet NSView *view;			// this is released for you on dealloc
 	TESetupAssistant *controller;	// not retained
 }
@@ -85,7 +85,7 @@
 - (IBAction)dismissAssistant:(id)sender; // unhooked by default
 
 // using the setup assistant
-- (void)addAssistant:(BaseAssistant*)assistant; // the order in which they are added is the order they are run
+- (void)addAssistant:(TEBaseAssistant*)assistant; // the order in which they are added is the order they are run
 - (BOOL)containsAssistantOfClass:(Class)aClass;
 - (BOOL)run;									// returns YES if any assistants were run
 - (void)reset;									// automatically called after last assistant finishes
@@ -98,7 +98,7 @@ ACC_COMBO_H(SEL, userSelector, UserSelector)
 - (OSStatus)selectStep:(NSString *)stepName;
 - (void)runNextAssistant;
 - (void)runPreviousAssistant;
-- (void)insertNextAssistant:(BaseAssistant *)assistant;
+- (void)insertNextAssistant:(TEBaseAssistant *)assistant;
 - (void)setObject:(id)obj forKey:(id)key; // these manipulate the sessionDict
 - (id)objectForKey:(id)key;
 
@@ -109,7 +109,7 @@ ACC_COMBO_H(SEL, userSelector, UserSelector)
 - (NSView *)specialView;
 - (NSBox *)assistantBox;
 - (NSArray *)assistants;
-- (BaseAssistant *)prevAssistant;
-- (BaseAssistant *)nextAssistant;
-- (BaseAssistant *)currAssistant;
+- (TEBaseAssistant *)prevAssistant;
+- (TEBaseAssistant *)nextAssistant;
+- (TEBaseAssistant *)currAssistant;
 @end

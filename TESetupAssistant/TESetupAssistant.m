@@ -25,13 +25,13 @@
 #import "NSBundle+Additions.h"
 #import "Common.h"
 
-@interface BaseAssistant (Private)
+@interface TEBaseAssistant (Private)
 - (void)setParentController:(TESetupAssistant*)aController;
 @end
-@implementation BaseAssistant (Private)
+@implementation TEBaseAssistant (Private)
 - (void)setParentController:(TESetupAssistant*)aController { controller = aController; }
 @end
-@implementation BaseAssistant
+@implementation TEBaseAssistant
 + (id)assistant                 { return [[self new] autorelease]; }
 - (OSStatus)prepareAssistant	{ return [NSBundle loadNibNamed:[self assistantNib] owner:self] ? noErr : resNotFound; }
 - (void)start					{ /* nothing */ }
@@ -47,8 +47,8 @@
 @end
 
 @interface TESetupAssistant (Private)
-- (void)runAssistant:(BaseAssistant*)assistant lastStep:(BOOL)lastStep;
-- (void)insertAssistant:(BaseAssistant*)assistant atIndex:(unsigned)index;
+- (void)runAssistant:(TEBaseAssistant*)assistant lastStep:(BOOL)lastStep;
+- (void)insertAssistant:(TEBaseAssistant*)assistant atIndex:(unsigned)index;
 @end
 @implementation TESetupAssistant
 
@@ -101,7 +101,7 @@
 #pragma mark -
 #pragma mark Using the Assistant
 
-- (void)addAssistant:(BaseAssistant*)assistant
+- (void)addAssistant:(TEBaseAssistant*)assistant
 {
 	[self insertAssistant:assistant atIndex:[assistants count]];
 }
@@ -115,7 +115,7 @@
 	
 	// prepare the stepView, do not allow steps to be added during installation
 	NSMutableArray *steps = [NSMutableArray array];
-	ENUMERATE(BaseAssistant *, assistant, [assistants objectEnumerator])
+	ENUMERATE(TEBaseAssistant *, assistant, [assistants objectEnumerator])
 		[steps addObjectsFromArray:[assistant orderedSteps]];
 	[installStepView setSteps:steps];
 	
@@ -126,7 +126,7 @@
 								NSHeight(biggestRect) - NSHeight([assistantBox frame]));
 	biggestRect.size = NSZeroSize;
 	
-	ENUMERATE(BaseAssistant *, assistant, [assistants objectEnumerator]) {
+	ENUMERATE(TEBaseAssistant *, assistant, [assistants objectEnumerator]) {
 		NSRect asRect = [[assistant view] frame];
 		if ( biggestRect.size.width < asRect.size.width )
 			biggestRect.size.width = asRect.size.width;
@@ -157,7 +157,7 @@
 
 - (BOOL)containsAssistantOfClass:(Class)aClass
 {
-	ENUMERATE(BaseAssistant *, assistant, [assistants objectEnumerator]) {
+	ENUMERATE(TEBaseAssistant *, assistant, [assistants objectEnumerator]) {
 		if ( [assistant isMemberOfClass:aClass] )
 			return YES;
 	}
@@ -191,7 +191,7 @@ ACC_COMBO_M(id, userObject, UserObject)
 
 - (void)runNextAssistant
 {
-	BaseAssistant *assistant = [assistants objectAtIndex:currentAssistant];
+	TEBaseAssistant *assistant = [assistants objectAtIndex:currentAssistant];
 	[[NSNotificationCenter defaultCenter] postNotificationName:TEAssistantDidFinishNotification object:assistant];
 	
 	if ( ++currentAssistant == [assistants count] ) {
@@ -216,7 +216,7 @@ ACC_COMBO_M(id, userObject, UserObject)
 	[self runAssistant:[assistants objectAtIndex:currentAssistant] lastStep:lastStep];
 }
 
-- (void)insertNextAssistant:(BaseAssistant *)assistant
+- (void)insertNextAssistant:(TEBaseAssistant *)assistant
 {
 	[self insertAssistant:assistant atIndex:currentAssistant+1];
 }
@@ -256,17 +256,17 @@ ACC_COMBO_M(id, userObject, UserObject)
 
 #pragma mark -
 #pragma mark Accessors
-- (BaseAssistant *)prevAssistant
+- (TEBaseAssistant *)prevAssistant
 {
 	return ( currentAssistant == 0 ) ? nil : [assistants objectAtIndex:currentAssistant-1];
 }
 
-- (BaseAssistant *)nextAssistant
+- (TEBaseAssistant *)nextAssistant
 {
 	return ( currentAssistant+1 >= [assistants count] ) ? nil : [assistants objectAtIndex:currentAssistant+1];
 }
 
-- (BaseAssistant *)currAssistant
+- (TEBaseAssistant *)currAssistant
 {
 	return [assistants count] > 0 ? [assistants objectAtIndex:currentAssistant] : nil;
 }
@@ -281,7 +281,7 @@ ACC_RETURN_M(NSArray  *, assistants)
 
 
 @implementation TESetupAssistant (Private)
-- (void)runAssistant:(BaseAssistant*)assistant lastStep:(BOOL)lastStep
+- (void)runAssistant:(TEBaseAssistant*)assistant lastStep:(BOOL)lastStep
 {
 	NSDisableScreenUpdates();
 	
@@ -302,7 +302,7 @@ ACC_RETURN_M(NSArray  *, assistants)
 	NSEnableScreenUpdates();
 }
 
-- (void)insertAssistant:(BaseAssistant*)assistant atIndex:(unsigned)index
+- (void)insertAssistant:(TEBaseAssistant*)assistant atIndex:(unsigned)index
 {
 	OSStatus err;
 	if ( [assistant view] )

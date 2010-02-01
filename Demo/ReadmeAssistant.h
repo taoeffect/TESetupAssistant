@@ -25,7 +25,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TESetupAssistant.h"
 
-@interface ReadmeAssistant : BaseAssistant {
+@interface ReadmeAssistant : TEBaseAssistant {
 	IBOutlet NSTextView *textView;
 	IBOutlet NSButton *quitButton;
 	NSString *readmePath;

@@ -26,7 +26,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TESetupAssistant.h"
 
-@interface InstallAssistant : BaseAssistant {
+@interface InstallAssistant : TEBaseAssistant {
 	IBOutlet NSProgressIndicator *progressBar;
 	IBOutlet NSTextField *textField;
 }
