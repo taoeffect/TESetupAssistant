@@ -32,7 +32,7 @@
 
 @class TESetupAssistant;
 
-// BaseAssistant is configured by default to behave as if it has only one view
+// TEBaseAssistant is configured by default to behave as if it has only one view
 // if your assistant has multiple views you probably want to override the
 // last three methods: startWithView, nextPressed, and prevPressed
 @interface TEBaseAssistant : NSObject {
@@ -42,14 +42,14 @@
 
 + (id)assistant; // calls new] autorelease]
 
-// TESetupAssistant <-(gets-from) BaseAssistant
+// TESetupAssistant <-(gets-from) TEBaseAssistant
 - (NSView *)view;
 - (NSString *)assistantName;	// used for error info. default returns [self className]
 - (NSString *)assistantNib;		// CHECK! (default is [self className])
 - (NSArray *)orderedSteps;		// OVERRIDE!
 - (NSDictionary *)results;      // this is returned as part of userInfo dict for TEAssistantDidFinishNotification
 
-// TESetupAssistant ->(tells) BaseAssistant
+// TESetupAssistant ->(tells) TEBaseAssistant
 - (OSStatus)prepareAssistant;	// default simply loads the nib returned by assistantNib
 - (void)start;					// called when it's this assistant's turn to go, default does nothing
 - (void)restart;				// called when go-back button is pressed, default calls start
@@ -94,7 +94,7 @@ ACC_COMBO_H(BOOL, modal, Modal)
 ACC_COMBO_H(id, userObject, UserObject)
 ACC_COMBO_H(SEL, userSelector, UserSelector)
 
-// BaseAssistant ->(tells) TESetupAssistant
+// TEBaseAssistant ->(tells) TESetupAssistant
 - (OSStatus)selectStep:(NSString *)stepName;
 - (void)runNextAssistant;
 - (void)runPreviousAssistant;
