@@ -1,0 +1,1 @@
+Information on TESetupAssistant is available [here](http://www.taoeffect.com/blog/2010/01/easy-cocoa-setup-assistants-with-tesetupassistant/).
