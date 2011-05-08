@@ -261,7 +261,14 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Demo" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Demo */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -355,9 +362,6 @@
 				"MACOSX_DEPLOYMENT_TARGET[arch=ppc64]" = 10.5;
 				"MACOSX_DEPLOYMENT_TARGET[arch=x86_64]" = 10.5;
 				PRODUCT_NAME = Demo;
-				SDKROOT = macosx10.4;
-				"SDKROOT[arch=ppc64]" = macosx10.5;
-				"SDKROOT[arch=x86_64]" = macosx10.5;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../TESetupAssistant\"";
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -377,9 +381,6 @@
 				"MACOSX_DEPLOYMENT_TARGET[arch=ppc64]" = 10.5;
 				"MACOSX_DEPLOYMENT_TARGET[arch=x86_64]" = 10.5;
 				PRODUCT_NAME = Demo;
-				SDKROOT = macosx10.4;
-				"SDKROOT[arch=ppc64]" = macosx10.5;
-				"SDKROOT[arch=x86_64]" = macosx10.5;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../TESetupAssistant\"";
 			};
 			name = Release;
@@ -394,7 +395,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
@@ -406,7 +406,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};

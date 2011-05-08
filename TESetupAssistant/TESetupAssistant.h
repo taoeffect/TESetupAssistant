@@ -57,8 +57,11 @@
 - (void)prevPressed:(id)sender;	// calls runPreviousAssistant (override if doing multiple steps)
 @end
 
+#ifndef MAC_OS_X_VERSION_10_6
+@protocol NSWindowDelegate <NSObject> @end
+#endif
 
-@interface TESetupAssistant : NSObject {
+@interface TESetupAssistant : NSObject <NSWindowDelegate> {
 	IBOutlet NSWindow *window; // the TESetupAssistant instance is set as the window's delegate
 	IBOutlet NSButton *nextButton;
 	IBOutlet NSButton *prevButton;

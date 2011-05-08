@@ -1,1 +1,4 @@
 .hg
+Demo/build/
+*.mode1v3
+*.pbxuser
