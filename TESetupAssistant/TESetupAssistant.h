@@ -57,10 +57,6 @@
 - (void)prevPressed:(id)sender;	// calls runPreviousAssistant (override if doing multiple steps)
 @end
 
-#ifndef MAC_OS_X_VERSION_10_6
-@protocol NSWindowDelegate <NSObject> @end
-#endif
-
 @interface TESetupAssistant : NSObject <NSWindowDelegate> {
 	IBOutlet NSWindow *window; // the TESetupAssistant instance is set as the window's delegate
 	IBOutlet NSButton *nextButton;
@@ -73,9 +69,6 @@
 	NSMutableArray *assistants;
 	NSMutableDictionary *sessionDict; // used by assistants to share data
 	int currentAssistant;
-	BOOL modal;
-	id userObject; // retained
-	SEL userSelector;
 }
 
 + (TESetupAssistant *)assistant;
@@ -93,9 +86,9 @@
 - (BOOL)run;									// returns YES if any assistants were run
 - (void)reset;									// automatically called after last assistant finishes
 
-ACC_COMBO_H(BOOL, modal, Modal)
-ACC_COMBO_H(id, userObject, UserObject)
-ACC_COMBO_H(SEL, userSelector, UserSelector)
+@property (nonatomic) BOOL modal;
+@property (nonatomic, strong) id userObject;
+@property (nonatomic) SEL userSelector;
 
 // TEBaseAssistant ->(tells) TESetupAssistant
 - (OSStatus)selectStep:(NSString *)stepName;

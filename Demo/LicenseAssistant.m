@@ -27,14 +27,7 @@
 
 
 @implementation LicenseAssistant
-
-- (void)dealloc
-{
-	[licensePath release];
-	[licenseSheet release];
-	[quitButton release];
-	[super dealloc];
-}
+@synthesize licensePath;
 
 - (NSArray *)orderedSteps
 {
@@ -84,7 +77,5 @@
 	if ( [controller modal] ) [NSApp stopModal];
 	[NSApp terminate:sender];
 }
-
-ACC_COMBO_M(NSString *, licensePath, LicensePath)
 
 @end

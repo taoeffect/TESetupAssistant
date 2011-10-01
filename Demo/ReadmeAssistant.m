@@ -26,7 +26,7 @@
 #import "Common.h"
 
 @implementation ReadmeAssistant
-
+@synthesize readmePath;
 - (NSArray *)orderedSteps
 {
 	return [NSArray arrayWithObject:@"Readme"];
@@ -57,13 +57,5 @@
 	[super prevPressed:sender];
 }
 
-ACC_COMBO_M(NSString *, readmePath, ReadmePath)
-
-- (void)dealloc
-{
-	[quitButton release];
-	[readmePath release];
-	[super dealloc];
-}
 
 @end

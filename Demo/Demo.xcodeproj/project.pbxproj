@@ -3,31 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1880979214328D230091F9F8 /* LicenseAssistant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1880979114328D230091F9F8 /* LicenseAssistant.xib */; };
+		1880979414328D2F0091F9F8 /* InstallAssistant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1880979314328D2F0091F9F8 /* InstallAssistant.xib */; };
+		1880979714328D4B0091F9F8 /* MiniAssistant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1880979514328D4B0091F9F8 /* MiniAssistant.xib */; };
+		1880979814328D4B0091F9F8 /* ReadmeAssistant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1880979614328D4B0091F9F8 /* ReadmeAssistant.xib */; };
+		1880979F14328DD80091F9F8 /* SetupAssistant.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1880979D14328DD80091F9F8 /* SetupAssistant.xib */; };
+		188097A014328DD80091F9F8 /* SetupAssistantMini.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1880979E14328DD80091F9F8 /* SetupAssistantMini.xib */; };
+		188097A71432AD3C0091F9F8 /* NSBundle+TEAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 188097A61432AD3C0091F9F8 /* NSBundle+TEAdditions.m */; };
 		18DD3ED31113A3CE0077854F /* ReadmeAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DD3ED21113A3CE0077854F /* ReadmeAssistant.m */; };
 		18DD3EF61113A4CC0077854F /* LicenseAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DD3EF51113A4CC0077854F /* LicenseAssistant.m */; };
 		18DD3EF91113A50C0077854F /* InstallAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DD3EF81113A50C0077854F /* InstallAssistant.m */; };
 		18DD3EFC1113A52D0077854F /* MiniAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DD3EFB1113A52D0077854F /* MiniAssistant.m */; };
-		18DD3F1F1113A83F0077854F /* InstallAssistant.xib in Sources */ = {isa = PBXBuildFile; fileRef = 18DD3F1E1113A83F0077854F /* InstallAssistant.xib */; };
 		18DD3F281113A8BA0077854F /* Readme.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18DD3F271113A8BA0077854F /* Readme.rtf */; };
 		18DD3F331113AC630077854F /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 18DD3F321113AC630077854F /* License.rtf */; };
-		18DD412A111611330077854F /* NSBundle+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DD4123111611330077854F /* NSBundle+Additions.m */; };
 		18DD412B111611330077854F /* TEInstallStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DD4125111611330077854F /* TEInstallStepCell.m */; };
 		18DD412C111611330077854F /* TEInstallStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DD4127111611330077854F /* TEInstallStepView.m */; };
 		18DD412D111611330077854F /* TESetupAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DD4129111611330077854F /* TESetupAssistant.m */; };
-		18DD4132111611790077854F /* LicenseAssistant.xib in Sources */ = {isa = PBXBuildFile; fileRef = 18DD4130111611790077854F /* LicenseAssistant.xib */; };
-		18DD4133111611790077854F /* ReadmeAssistant.xib in Sources */ = {isa = PBXBuildFile; fileRef = 18DD4131111611790077854F /* ReadmeAssistant.xib */; };
-		18DD4139111611880077854F /* SetupAssistant.xib in Sources */ = {isa = PBXBuildFile; fileRef = 18DD4137111611880077854F /* SetupAssistant.xib */; };
-		18DD413A111611880077854F /* SetupAssistantMini.xib in Sources */ = {isa = PBXBuildFile; fileRef = 18DD4138111611880077854F /* SetupAssistantMini.xib */; };
 		18DD41751116138D0077854F /* BlueDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DD41721116138D0077854F /* BlueDot.png */; };
 		18DD41761116138D0077854F /* DisabledGrayDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DD41731116138D0077854F /* DisabledGrayDot.png */; };
 		18DD41771116138D0077854F /* GrayDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DD41741116138D0077854F /* GrayDot.png */; };
 		18DD41AF111615D00077854F /* TESetupAssistantBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DD41AE111615D00077854F /* TESetupAssistantBGView.m */; };
-		18DD41BB111615EB0077854F /* NSImage+Scaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DD41BA111615EB0077854F /* NSImage+Scaling.m */; };
-		18DD41EF111618AB0077854F /* MiniAssistant.xib in Sources */ = {isa = PBXBuildFile; fileRef = 18DD41EE111618AB0077854F /* MiniAssistant.xib */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* DemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* DemoAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -39,6 +38,14 @@
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1880979114328D230091F9F8 /* LicenseAssistant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseAssistant.xib; sourceTree = "<group>"; };
+		1880979314328D2F0091F9F8 /* InstallAssistant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstallAssistant.xib; sourceTree = "<group>"; };
+		1880979514328D4B0091F9F8 /* MiniAssistant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MiniAssistant.xib; sourceTree = "<group>"; };
+		1880979614328D4B0091F9F8 /* ReadmeAssistant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadmeAssistant.xib; sourceTree = "<group>"; };
+		1880979D14328DD80091F9F8 /* SetupAssistant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupAssistant.xib; path = ../TESetupAssistant/SetupAssistant.xib; sourceTree = "<group>"; };
+		1880979E14328DD80091F9F8 /* SetupAssistantMini.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupAssistantMini.xib; path = ../TESetupAssistant/SetupAssistantMini.xib; sourceTree = "<group>"; };
+		188097A51432AD3C0091F9F8 /* NSBundle+TEAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+TEAdditions.h"; path = "../TESetupAssistant/NSBundle+TEAdditions.h"; sourceTree = "<group>"; };
+		188097A61432AD3C0091F9F8 /* NSBundle+TEAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+TEAdditions.m"; path = "../TESetupAssistant/NSBundle+TEAdditions.m"; sourceTree = "<group>"; };
 		18DD3ED11113A3CE0077854F /* ReadmeAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadmeAssistant.h; sourceTree = "<group>"; };
 		18DD3ED21113A3CE0077854F /* ReadmeAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadmeAssistant.m; sourceTree = "<group>"; };
 		18DD3EF41113A4CC0077854F /* LicenseAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseAssistant.h; sourceTree = "<group>"; };
@@ -47,30 +54,20 @@
 		18DD3EF81113A50C0077854F /* InstallAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallAssistant.m; sourceTree = "<group>"; };
 		18DD3EFA1113A52D0077854F /* MiniAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniAssistant.h; sourceTree = "<group>"; };
 		18DD3EFB1113A52D0077854F /* MiniAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniAssistant.m; sourceTree = "<group>"; };
-		18DD3F1E1113A83F0077854F /* InstallAssistant.xib */ = {isa = PBXFileReference; explicitFileType = file.xib; fileEncoding = 4; path = InstallAssistant.xib; sourceTree = "<group>"; };
 		18DD3F271113A8BA0077854F /* Readme.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Readme.rtf; sourceTree = "<group>"; };
 		18DD3F321113AC630077854F /* License.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = License.rtf; sourceTree = "<group>"; };
 		18DD4121111611330077854F /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../TESetupAssistant/Common.h; sourceTree = SOURCE_ROOT; };
-		18DD4122111611330077854F /* NSBundle+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+Additions.h"; path = "../TESetupAssistant/NSBundle+Additions.h"; sourceTree = SOURCE_ROOT; };
-		18DD4123111611330077854F /* NSBundle+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+Additions.m"; path = "../TESetupAssistant/NSBundle+Additions.m"; sourceTree = SOURCE_ROOT; };
 		18DD4124111611330077854F /* TEInstallStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TEInstallStepCell.h; path = ../TESetupAssistant/TEInstallStepCell.h; sourceTree = SOURCE_ROOT; };
 		18DD4125111611330077854F /* TEInstallStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TEInstallStepCell.m; path = ../TESetupAssistant/TEInstallStepCell.m; sourceTree = SOURCE_ROOT; };
 		18DD4126111611330077854F /* TEInstallStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TEInstallStepView.h; path = ../TESetupAssistant/TEInstallStepView.h; sourceTree = SOURCE_ROOT; };
 		18DD4127111611330077854F /* TEInstallStepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TEInstallStepView.m; path = ../TESetupAssistant/TEInstallStepView.m; sourceTree = SOURCE_ROOT; };
 		18DD4128111611330077854F /* TESetupAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TESetupAssistant.h; path = ../TESetupAssistant/TESetupAssistant.h; sourceTree = SOURCE_ROOT; };
 		18DD4129111611330077854F /* TESetupAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TESetupAssistant.m; path = ../TESetupAssistant/TESetupAssistant.m; sourceTree = SOURCE_ROOT; };
-		18DD4130111611790077854F /* LicenseAssistant.xib */ = {isa = PBXFileReference; explicitFileType = file.xib; fileEncoding = 4; path = LicenseAssistant.xib; sourceTree = "<group>"; };
-		18DD4131111611790077854F /* ReadmeAssistant.xib */ = {isa = PBXFileReference; explicitFileType = file.xib; fileEncoding = 4; path = ReadmeAssistant.xib; sourceTree = "<group>"; };
-		18DD4137111611880077854F /* SetupAssistant.xib */ = {isa = PBXFileReference; explicitFileType = file.xib; fileEncoding = 4; name = SetupAssistant.xib; path = ../TESetupAssistant/SetupAssistant.xib; sourceTree = SOURCE_ROOT; };
-		18DD4138111611880077854F /* SetupAssistantMini.xib */ = {isa = PBXFileReference; explicitFileType = file.xib; fileEncoding = 4; name = SetupAssistantMini.xib; path = ../TESetupAssistant/SetupAssistantMini.xib; sourceTree = SOURCE_ROOT; };
 		18DD41721116138D0077854F /* BlueDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueDot.png; path = ../TESetupAssistant/BlueDot.png; sourceTree = SOURCE_ROOT; };
 		18DD41731116138D0077854F /* DisabledGrayDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DisabledGrayDot.png; path = ../TESetupAssistant/DisabledGrayDot.png; sourceTree = SOURCE_ROOT; };
 		18DD41741116138D0077854F /* GrayDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GrayDot.png; path = ../TESetupAssistant/GrayDot.png; sourceTree = SOURCE_ROOT; };
 		18DD41AD111615D00077854F /* TESetupAssistantBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TESetupAssistantBGView.h; path = ../TESetupAssistant/TESetupAssistantBGView.h; sourceTree = SOURCE_ROOT; };
 		18DD41AE111615D00077854F /* TESetupAssistantBGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TESetupAssistantBGView.m; path = ../TESetupAssistant/TESetupAssistantBGView.m; sourceTree = SOURCE_ROOT; };
-		18DD41B9111615EB0077854F /* NSImage+Scaling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+Scaling.h"; path = "../TESetupAssistant/NSImage+Scaling.h"; sourceTree = SOURCE_ROOT; };
-		18DD41BA111615EB0077854F /* NSImage+Scaling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+Scaling.m"; path = "../TESetupAssistant/NSImage+Scaling.m"; sourceTree = SOURCE_ROOT; };
-		18DD41EE111618AB0077854F /* MiniAssistant.xib */ = {isa = PBXFileReference; explicitFileType = file.xib; fileEncoding = 4; path = MiniAssistant.xib; sourceTree = "<group>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		256AC3D80F4B6AC300CF3369 /* DemoAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoAppDelegate.h; sourceTree = "<group>"; };
 		256AC3D90F4B6AC300CF3369 /* DemoAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoAppDelegate.m; sourceTree = "<group>"; };
@@ -126,10 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				18DD4121111611330077854F /* Common.h */,
-				18DD4122111611330077854F /* NSBundle+Additions.h */,
-				18DD4123111611330077854F /* NSBundle+Additions.m */,
-				18DD41B9111615EB0077854F /* NSImage+Scaling.h */,
-				18DD41BA111615EB0077854F /* NSImage+Scaling.m */,
+				188097A51432AD3C0091F9F8 /* NSBundle+TEAdditions.h */,
+				188097A61432AD3C0091F9F8 /* NSBundle+TEAdditions.m */,
 				18DD4124111611330077854F /* TEInstallStepCell.h */,
 				18DD4125111611330077854F /* TEInstallStepCell.m */,
 				18DD4126111611330077854F /* TEInstallStepView.h */,
@@ -162,10 +157,10 @@
 		18DD3EFD1113A66C0077854F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				18DD4131111611790077854F /* ReadmeAssistant.xib */,
-				18DD4130111611790077854F /* LicenseAssistant.xib */,
-				18DD3F1E1113A83F0077854F /* InstallAssistant.xib */,
-				18DD41EE111618AB0077854F /* MiniAssistant.xib */,
+				1880979114328D230091F9F8 /* LicenseAssistant.xib */,
+				1880979314328D2F0091F9F8 /* InstallAssistant.xib */,
+				1880979514328D4B0091F9F8 /* MiniAssistant.xib */,
+				1880979614328D4B0091F9F8 /* ReadmeAssistant.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -173,11 +168,11 @@
 		18DD41DB1116179D0077854F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1880979D14328DD80091F9F8 /* SetupAssistant.xib */,
+				1880979E14328DD80091F9F8 /* SetupAssistantMini.xib */,
 				18DD41721116138D0077854F /* BlueDot.png */,
 				18DD41731116138D0077854F /* DisabledGrayDot.png */,
 				18DD41741116138D0077854F /* GrayDot.png */,
-				18DD4137111611880077854F /* SetupAssistant.xib */,
-				18DD4138111611880077854F /* SetupAssistantMini.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -259,8 +254,11 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Demo" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -290,6 +288,12 @@
 				18DD41751116138D0077854F /* BlueDot.png in Resources */,
 				18DD41761116138D0077854F /* DisabledGrayDot.png in Resources */,
 				18DD41771116138D0077854F /* GrayDot.png in Resources */,
+				1880979214328D230091F9F8 /* LicenseAssistant.xib in Resources */,
+				1880979414328D2F0091F9F8 /* InstallAssistant.xib in Resources */,
+				1880979714328D4B0091F9F8 /* MiniAssistant.xib in Resources */,
+				1880979814328D4B0091F9F8 /* ReadmeAssistant.xib in Resources */,
+				1880979F14328DD80091F9F8 /* SetupAssistant.xib in Resources */,
+				188097A014328DD80091F9F8 /* SetupAssistantMini.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,18 +310,11 @@
 				18DD3EF61113A4CC0077854F /* LicenseAssistant.m in Sources */,
 				18DD3EF91113A50C0077854F /* InstallAssistant.m in Sources */,
 				18DD3EFC1113A52D0077854F /* MiniAssistant.m in Sources */,
-				18DD3F1F1113A83F0077854F /* InstallAssistant.xib in Sources */,
-				18DD412A111611330077854F /* NSBundle+Additions.m in Sources */,
 				18DD412B111611330077854F /* TEInstallStepCell.m in Sources */,
 				18DD412C111611330077854F /* TEInstallStepView.m in Sources */,
 				18DD412D111611330077854F /* TESetupAssistant.m in Sources */,
-				18DD4132111611790077854F /* LicenseAssistant.xib in Sources */,
-				18DD4133111611790077854F /* ReadmeAssistant.xib in Sources */,
-				18DD4139111611880077854F /* SetupAssistant.xib in Sources */,
-				18DD413A111611880077854F /* SetupAssistantMini.xib in Sources */,
 				18DD41AF111615D00077854F /* TESetupAssistantBGView.m in Sources */,
-				18DD41BB111615EB0077854F /* NSImage+Scaling.m in Sources */,
-				18DD41EF111618AB0077854F /* MiniAssistant.xib in Sources */,
+				188097A71432AD3C0091F9F8 /* NSBundle+TEAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,16 +344,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Demo_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = 4.0;
 				INFOPLIST_FILE = "Demo-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				"MACOSX_DEPLOYMENT_TARGET[arch=ppc64]" = 10.5;
@@ -371,11 +367,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Demo_Prefix.pch;
-				GCC_VERSION = 4.0;
 				INFOPLIST_FILE = "Demo-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				"MACOSX_DEPLOYMENT_TARGET[arch=ppc64]" = 10.5;
@@ -388,24 +384,24 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
 			};
 			name = Release;
 		};

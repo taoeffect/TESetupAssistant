@@ -26,12 +26,11 @@
 #import "Common.h"
 
 @interface TEInstallStepCell : NSCell {
-	NSDictionary *stringAttributes;
 	NSAttributedString *attrString;
 	NSImage *image;
 	NSSize imageSize, textSize, cellSize;
 	CGFloat verticalTextOffset;
 }
-ACC_COMBO_H(NSDictionary *, stringAttributes, StringAttributes)
-ACC_COMBO_H(CGFloat, verticalTextOffset, VerticalTextOffset) // NOTE: does not affect cellSize
+@property (nonatomic, strong) NSDictionary *stringAttributes;
+@property (nonatomic) CGFloat verticalTextOffset; // NOTE: does not affect cellSize
 @end

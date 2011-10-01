@@ -33,67 +33,53 @@
 
 @implementation TEInstallStepView
 
+@synthesize desiredSpacing, verticalTextOffset;
+@synthesize prevStepImg, currStepImg, nextStepImg;
+@synthesize prevStepTextAttrs, currStepTextAttrs, nextStepTextAttrs;
+
 - (id)initWithFrame:(NSRect)frame
 {
 	if ( (self = [super initWithFrame:frame]) ) {
 		cell = [TEInstallStepCell new];
-		prevStepImg = [[NSImage imageNamed:@"GrayDot"] retain];
-		currStepImg = [[NSImage imageNamed:@"BlueDot"] retain];
-		nextStepImg = [[NSImage imageNamed:@"DisabledGrayDot"] retain];
+		prevStepImg = [NSImage imageNamed:@"GrayDot"];
+		currStepImg = [NSImage imageNamed:@"BlueDot"];
+		nextStepImg = [NSImage imageNamed:@"DisabledGrayDot"];
 		desiredSpacing = 25;
 		[self setFocusRingType:NSFocusRingTypeNone];
 		
 		// customize the cell with default values
 		[cell setVerticalTextOffset:2.0];
 		
-		NSShadow *shadow = [[NSShadow new] autorelease];
+		NSShadow *shadow = [NSShadow new];
 		[shadow setShadowColor:[NSColor whiteColor]];
 		[shadow setShadowOffset:NSMakeSize(0, -1.0)];
 		
-		prevStepTextAttrs = [[NSDictionary dictionaryWithObjectsAndKeys:
+		prevStepTextAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
 							  [NSFont boldSystemFontOfSize:13.0], NSFontAttributeName,
-							  shadow, NSShadowAttributeName, nil] retain];
-		currStepTextAttrs = [prevStepTextAttrs retain];
-		nextStepTextAttrs = [[NSDictionary dictionaryWithObjectsAndKeys:
+							  shadow, NSShadowAttributeName, nil];
+		currStepTextAttrs = prevStepTextAttrs;
+		nextStepTextAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
 							  [NSFont systemFontOfSize:13.0], NSFontAttributeName,
 							  [NSColor darkGrayColor], NSForegroundColorAttributeName,
-							  shadow, NSShadowAttributeName,nil] retain];
+							  shadow, NSShadowAttributeName,nil];
 	}
 	return self;
 }
 
-- (void)dealloc
-{
-	[steps release];
-	[currentStep release];
-	[cell release];
-	[prevStepImg release];
-	[currStepImg release];
-	[nextStepImg release];
-	[prevStepTextAttrs release];
-	[currStepTextAttrs release];
-	[nextStepTextAttrs release];
-	[super dealloc];
-}
 
 #pragma mark Interface implementation
 - (void)clearSteps
 {
-	DESTROY(steps);
-	DESTROY(currentStep);
+	steps = nil;
+	currentStep = nil;
 }
 
 - (void)setSteps:(NSArray *)theSteps
 {
-	ASSIGN(steps, theSteps);
-	ASSIGN(currentStep, [steps objectAtIndex:0]);
+	steps = theSteps;
+    currentStep = [steps objectAtIndex:0];
 	if ( [steps count] > 0 ) [self calculateSizes]; // careful, don't want to divide by 0!
 	[self setNeedsDisplay:YES];
-}
-
-- (void)setDesiredSpacing:(CGFloat)spacing
-{
-	desiredSpacing = spacing;
 }
 
 - (void)setVerticalTextOffset:(CGFloat)offset
@@ -112,7 +98,7 @@
 		log_err("bad step: %@", stepName);
 		return resNotFound;
 	}
-	ASSIGN(currentStep, stepName);
+	currentStep = stepName;
 	return noErr;
 }
 
@@ -120,14 +106,6 @@
 {
 	return currentStep;
 }
-
-ACC_RETURN_M(CGFloat, desiredSpacing)
-ACC_COMBO_M(NSImage *, prevStepImg, PrevStepImg)
-ACC_COMBO_M(NSImage *, currStepImg, CurrStepImg)
-ACC_COMBO_M(NSImage *, nextStepImg, NextStepImg)
-ACC_COMBO_M(NSDictionary *, prevStepTextAttrs, PrevStepTextAttrs)
-ACC_COMBO_M(NSDictionary *, currStepTextAttrs, CurrStepTextAttrs)
-ACC_COMBO_M(NSDictionary *, nextStepTextAttrs, NextStepTextAttrs)
 
 #pragma mark -
 #pragma mark Drawing
@@ -142,7 +120,7 @@ ACC_COMBO_M(NSDictionary *, nextStepTextAttrs, NextStepTextAttrs)
 	drawRect.size = bounds.size;
 	drawRect.origin = NSMakePoint(0, NSHeight(bounds) - cellHeight - VERTICAL_OFFSET);
 	
-	ENUMERATE(NSString *, step, [steps objectEnumerator])
+	for (NSString *step in steps)
 	{
 		// prepare the cell to draw the correct image and string
 		if ( [step isEqualToString:currentStep] ) {
@@ -179,7 +157,7 @@ ACC_COMBO_M(NSDictionary *, nextStepTextAttrs, NextStepTextAttrs)
 	[cell setStringValue:@"FOO"];
 	cellHeight = [cell cellSize].height;
 	
-	unsigned stepCount = [steps count];
+	NSUInteger stepCount = [steps count];
 	CGFloat availableHeight = NSHeight([self bounds]) - (cellHeight * stepCount) - VERTICAL_OFFSET;
 	CGFloat maxHeight = availableHeight / stepCount;
 	calculatedSpacing = MAX(MIN(desiredSpacing, maxHeight), cellHeight);

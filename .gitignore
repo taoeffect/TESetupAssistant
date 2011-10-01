@@ -1,4 +1,5 @@
-.hg
-Demo/build/
-*.mode1v3
-*.pbxuser
+DerivedData/
+**/project.xcworkspace/
+**/xcuserdata/
+**/**/project.xcworkspace/
+**/**/xcuserdata/

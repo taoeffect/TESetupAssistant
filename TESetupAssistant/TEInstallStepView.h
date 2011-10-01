@@ -32,29 +32,22 @@
 	
 	TEInstallStepCell *cell;
 	
-	NSImage *prevStepImg;
-	NSImage *currStepImg;
-	NSImage *nextStepImg;
-	NSDictionary *prevStepTextAttrs;
-	NSDictionary *currStepTextAttrs;
-	NSDictionary *nextStepTextAttrs;
-	
-	CGFloat desiredSpacing;
 	CGFloat calculatedSpacing;
 	CGFloat cellHeight;
 }
+
+@property (nonatomic, readonly) CGFloat desiredSpacing;
+@property (nonatomic) CGFloat verticalTextOffset;
+@property (nonatomic, strong) NSImage *prevStepImg;
+@property (nonatomic, strong) NSImage *currStepImg;
+@property (nonatomic, strong) NSImage *nextStepImg;
+@property (nonatomic, strong) NSDictionary *prevStepTextAttrs;
+@property (nonatomic, strong) NSDictionary *currStepTextAttrs;
+@property (nonatomic, strong) NSDictionary *nextStepTextAttrs;
 
 - (void)clearSteps;
 - (void)setSteps:(NSArray *)theSteps;
 - (OSStatus)selectStep:(NSString *)stepName;
 - (NSString*)currentStep;
 
-ACC_COMBO_H(CGFloat, desiredSpacing, DesiredSpacing)
-ACC_COMBO_H(CGFloat, verticalTextOffset, VerticalTextOffset)
-ACC_COMBO_H(NSImage *, prevStepImg, PrevStepImg)
-ACC_COMBO_H(NSImage *, currStepImg, CurrStepImg)
-ACC_COMBO_H(NSImage *, nextStepImg, NextStepImg)
-ACC_COMBO_H(NSDictionary *, prevStepTextAttrs, PrevStepTextAttrs)
-ACC_COMBO_H(NSDictionary *, currStepTextAttrs, CurrStepTextAttrs)
-ACC_COMBO_H(NSDictionary *, nextStepTextAttrs, NextStepTextAttrs)
 @end

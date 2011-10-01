@@ -58,7 +58,7 @@
 
 - (IBAction)showMiniAssistant:sender
 {
-	TESetupAssistant *sa = [[[TESetupAssistant alloc] initMini] autorelease];
+	TESetupAssistant *sa = [[TESetupAssistant alloc] initMini];
 	[sa setModal:YES];
 	[sa addAssistant:[MiniAssistant assistant]];
 	[sa run];

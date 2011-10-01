@@ -28,7 +28,6 @@
 @interface ReadmeAssistant : TEBaseAssistant {
 	IBOutlet NSTextView *textView;
 	IBOutlet NSButton *quitButton;
-	NSString *readmePath;
 }
-ACC_COMBO_H(NSString *, readmePath, ReadmePath)
+@property (nonatomic, strong) NSString *readmePath;
 @end

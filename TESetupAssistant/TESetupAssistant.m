@@ -22,7 +22,7 @@
 //  THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import "TESetupAssistant.h"
-#import "NSBundle+Additions.h"
+#import "NSBundle+TEAdditions.h"
 #import "Common.h"
 
 @interface TEBaseAssistant (Private)
@@ -32,7 +32,7 @@
 - (void)setParentController:(TESetupAssistant*)aController { controller = aController; }
 @end
 @implementation TEBaseAssistant
-+ (id)assistant                 { return [[self new] autorelease]; }
++ (id)assistant                 { return [self new]; }
 - (OSStatus)prepareAssistant	{ return [NSBundle loadNibNamed:[self assistantNib] owner:self] ? noErr : resNotFound; }
 - (void)start					{ /* nothing */ }
 - (void)restart					{ [self start]; }
@@ -43,14 +43,15 @@
 - (NSArray *)orderedSteps		{ return nil; }
 - (NSDictionary *)results		{ return nil; }
 - (NSView *)view				{ return view; }
-- (void)dealloc					{ [view release]; [super dealloc]; }
 @end
 
 @interface TESetupAssistant (Private)
 - (void)runAssistant:(TEBaseAssistant*)assistant lastStep:(BOOL)lastStep;
-- (void)insertAssistant:(TEBaseAssistant*)assistant atIndex:(unsigned)index;
+- (void)insertAssistant:(TEBaseAssistant*)assistant atIndex:(NSUInteger)index;
 @end
 @implementation TESetupAssistant
+
+@synthesize modal, userObject, userSelector;
 
 #pragma mark -
 #pragma mark Initialization & Destruction Related Things
@@ -86,12 +87,6 @@
 	return self;
 }
 
-- (void)dealloc
-{
-	[assistants release];
-	[window release];
-	[super dealloc];
-}
 
 - (NSString *)nibName
 {
@@ -115,7 +110,7 @@
 	
 	// prepare the stepView, do not allow steps to be added during installation
 	NSMutableArray *steps = [NSMutableArray array];
-	ENUMERATE(TEBaseAssistant *, assistant, [assistants objectEnumerator])
+	for (TEBaseAssistant *assistant in assistants)
 		[steps addObjectsFromArray:[assistant orderedSteps]];
 	[installStepView setSteps:steps];
 	
@@ -126,7 +121,7 @@
 								NSHeight(biggestRect) - NSHeight([assistantBox frame]));
 	biggestRect.size = NSZeroSize;
 	
-	ENUMERATE(TEBaseAssistant *, assistant, [assistants objectEnumerator]) {
+	for (TEBaseAssistant *assistant in assistants) {
 		NSRect asRect = [[assistant view] frame];
 		if ( biggestRect.size.width < asRect.size.width )
 			biggestRect.size.width = asRect.size.width;
@@ -157,16 +152,12 @@
 
 - (BOOL)containsAssistantOfClass:(Class)aClass
 {
-	ENUMERATE(TEBaseAssistant *, assistant, [assistants objectEnumerator]) {
+	for (TEBaseAssistant *assistant in assistants) {
 		if ( [assistant isMemberOfClass:aClass] )
 			return YES;
 	}
 	return NO;
 }
-
-ACC_COMBOP_M(BOOL, modal, Modal)
-ACC_COMBOP_M(SEL, userSelector, UserSelector)
-ACC_COMBO_M(id, userObject, UserObject)
 
 #pragma mark -
 #pragma mark Delegate Methods
@@ -286,10 +277,10 @@ ACC_RETURN_M(NSArray  *, assistants)
 	NSDisableScreenUpdates();
 	
 	// reset any possible, innocent changes made from previous assisants
-	[prevButton setTitle:@"Go Back"];
+	[prevButton setTitle:NSLocalizedString(@"Go Back", @"")];
 	[prevButton setTarget:self];
 	[prevButton setAction:@selector(prevPressed:)];
-	[nextButton setTitle:@"Next"];
+	[nextButton setTitle:NSLocalizedString(@"Next", @"")];
 	[nextButton setTarget:self];
 	[nextButton setAction:@selector(nextPressed:)];
 	[prevButton setEnabled:(currentAssistant != 0)];
@@ -297,12 +288,13 @@ ACC_RETURN_M(NSArray  *, assistants)
 	
 	[assistantBox setContentView:[assistant view]];
 	[window makeFirstResponder:[assistant view]];
+    [nextButton setNextKeyView:[assistant view]];
 	[self selectStep:[[assistant orderedSteps] objectAtIndex:0]];
 	lastStep ? [assistant restart] : [assistant start];
 	NSEnableScreenUpdates();
 }
 
-- (void)insertAssistant:(TEBaseAssistant*)assistant atIndex:(unsigned)index
+- (void)insertAssistant:(TEBaseAssistant*)assistant atIndex:(NSUInteger)index
 {
 	OSStatus err;
 	if ( [assistant view] )

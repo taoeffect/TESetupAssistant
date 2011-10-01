@@ -33,14 +33,7 @@
 
 
 @implementation TEInstallStepCell
-
-- (void)dealloc
-{
-	[stringAttributes release];
-	[attrString release];
-	[image release];
-	[super dealloc];
-}
+@synthesize stringAttributes, verticalTextOffset;
 
 - (id)init
 {
@@ -67,7 +60,7 @@
 - (void)setImage:(NSImage*)img
 {
 	if ( img == image ) return;
-	ASSIGN(image, img);
+	image = img;
 #ifdef IMG_SIZE
 	[image setSize:NSMakeSize(IMG_SIZE, IMG_SIZE)];
 #endif
@@ -76,14 +69,14 @@
 
 - (void)setStringValue:(NSString*)str
 {
-	ASSIGN(attrString, [[[NSAttributedString alloc] initWithString:str attributes:[self stringAttributes]] autorelease]);
+	attrString = [[NSAttributedString alloc] initWithString:str attributes:[self stringAttributes]];
 	[self calculateCellSize];
 }
 
 - (void)setStringAttributes:(NSDictionary *)attrs
 {
 	if ( attrs == stringAttributes ) return;
-	ASSIGN(stringAttributes, attrs);
+	stringAttributes = attrs;
 	[self calculateCellSize];
 }
 

@@ -23,20 +23,14 @@
 //
 
 #import "TESetupAssistantBGView.h"
-#import "NSImage+Scaling.h"
 #import "Common.h"
 
 @implementation TESetupAssistantBGView
 
-- (void)dealloc
-{
-	[image release];
-	[super dealloc];
-}
 
 - (void)awakeFromNib
 {
-	image = [[NSImage imageNamed:@"NSApplicationIcon"] retain];
+	image = [NSImage imageNamed:@"NSApplicationIcon"];
 	opacity = 0.15;
 	[self setImageFrame:NSMakeRect(-50, NSHeight([self bounds]) - 412, 512, 512)];
 }
@@ -60,15 +54,13 @@ ACC_RETURN_M(NSRect, imageFrame)
 - (void)setImage:(NSImage*)anImage
 {
 	if ( anImage == image ) return;
-	ASSIGN(image, anImage);
-	[image setScalesWhenResized:YES];
+	image = anImage;
 	[image setSize:imageFrame.size];
 }
 
 - (void)setImageFrame:(NSRect)frame
 {
 	imageFrame = frame;
-	[image setScalesWhenResized:YES];
 	[image setSize:imageFrame.size];
 }
 

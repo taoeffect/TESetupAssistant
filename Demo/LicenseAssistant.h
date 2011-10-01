@@ -29,11 +29,9 @@
 	IBOutlet NSPanel *licenseSheet;
 	IBOutlet NSTextView *textView;
 	IBOutlet NSButton *quitButton;
-	NSString *licensePath;
 }
+@property (nonatomic, strong) NSString *licensePath;
 - (IBAction)dismissSheet:(id)sender;
 - (IBAction)disagree:(id)sender;
 - (IBAction)agree:(id)sender;
-
-ACC_COMBO_H(NSString *, licensePath, LicensePath)
 @end
