@@ -33,6 +33,7 @@
 @end
 @implementation TEBaseAssistant
 + (id)assistant                 { return [self new]; }
+- (TESetupAssistant*)controller { return controller; }
 - (OSStatus)prepareAssistant	{ return [NSBundle loadNibNamed:[self assistantNib] owner:self] ? noErr : resNotFound; }
 - (void)start					{ /* nothing */ }
 - (void)restart					{ [self start]; }

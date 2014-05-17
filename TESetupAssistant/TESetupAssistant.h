@@ -41,6 +41,7 @@
 }
 
 + (id)assistant; // calls new] autorelease]
+- (TESetupAssistant*)controller;
 
 // TESetupAssistant <-(gets-from) TEBaseAssistant
 - (NSView *)view;
