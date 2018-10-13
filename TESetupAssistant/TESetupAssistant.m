@@ -133,6 +133,10 @@
 	biggestRect.size.width  += padding.width;
 	[window setFrame:biggestRect display:NO];
 	
+  if ( @available(macOS 10.14, *) ) {
+    [assistantBox setBorderColor:NSColor.windowFrameColor];
+    [assistantBox setFillColor:NSColor.windowBackgroundColor];
+  }
 	// run the first assistant
 	[self runAssistant:[assistants objectAtIndex:(currentAssistant = 0)] lastStep:NO];
 	[window center];
