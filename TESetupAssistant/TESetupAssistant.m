@@ -59,39 +59,39 @@
 
 + (TESetupAssistant*)assistant
 {
-	static TESetupAssistant *instance = nil;
-	if ( !instance ) instance = [TESetupAssistant new];
-	return instance;
+    static TESetupAssistant *instance = nil;
+    if ( !instance ) instance = [TESetupAssistant new];
+    return instance;
 }
 
 - (void)awakeFromNib
 {
-	[window setDelegate:self];
+    [window setDelegate:self];
 }
 
 - (id)init
 {
-	if ( (self = [super init]) ) {
-		assistants = [NSMutableArray new];
-		sessionDict = [NSMutableDictionary new];
-	}
-	return self;
+    if ( (self = [super init]) ) {
+        assistants = [NSMutableArray new];
+        sessionDict = [NSMutableDictionary new];
+    }
+    return self;
 }
 
 - (id)initMini
 {
-	if ( (self = [super init]) ) {
-		[NSBundle loadNibNamedOrQuit:@"SetupAssistantMini" owner:self];
-		assistants = [NSMutableArray new];
-		sessionDict = [NSMutableDictionary new];
-	}
-	return self;
+    if ( (self = [super init]) ) {
+        [NSBundle loadNibNamedOrQuit:@"SetupAssistantMini" owner:self];
+        assistants = [NSMutableArray new];
+        sessionDict = [NSMutableDictionary new];
+    }
+    return self;
 }
 
 
 - (NSString *)nibName
 {
-	return @"SetupAssistant";
+    return @"SetupAssistant";
 }
 
 #pragma mark -
@@ -99,69 +99,69 @@
 
 - (void)addAssistant:(TEBaseAssistant*)assistant
 {
-	[self insertAssistant:assistant atIndex:[assistants count]];
+    [self insertAssistant:assistant atIndex:[assistants count]];
 }
 
 - (BOOL)run
 {
-	if ( !window ) [NSBundle loadNibNamedOrQuit:[self nibName] owner:self];
-	
-	if ( [assistants count] == 0 )
-		return NO;
-	
-	// prepare the stepView, do not allow steps to be added during installation
-	NSMutableArray *steps = [NSMutableArray array];
-	for (TEBaseAssistant *assistant in assistants)
-		[steps addObjectsFromArray:[assistant orderedSteps]];
-	[installStepView setSteps:steps];
-	
-	// go through all assistants and choose the one with the biggest
-	// view size to be the size of the window
-	NSRect biggestRect = [window frame];
-	NSSize padding = NSMakeSize(NSWidth(biggestRect) - NSWidth([assistantBox frame]),
-								NSHeight(biggestRect) - NSHeight([assistantBox frame]));
-	biggestRect.size = NSZeroSize;
-	
-	for (TEBaseAssistant *assistant in assistants) {
-		NSRect asRect = [[assistant view] frame];
-		if ( biggestRect.size.width < asRect.size.width )
-			biggestRect.size.width = asRect.size.width;
-		if ( biggestRect.size.height < asRect.size.height )
-			biggestRect.size.height = asRect.size.height;
-	}
-	biggestRect.size.height += padding.height;
-	biggestRect.size.width  += padding.width;
-	[window setFrame:biggestRect display:NO];
-	
-  if ( @available(macOS 10.14, *) ) {
-    [assistantBox setBorderColor:NSColor.windowFrameColor];
-    [assistantBox setFillColor:NSColor.windowBackgroundColor];
-  }
-	// run the first assistant
-	[self runAssistant:[assistants objectAtIndex:(currentAssistant = 0)] lastStep:NO];
-	[window center];
-	[window makeKeyAndOrderFront:self];
-	if ( modal ) [NSApp runModalForWindow:window];
-	return YES;
+    if ( !window ) [NSBundle loadNibNamedOrQuit:[self nibName] owner:self];
+    
+    if ( [assistants count] == 0 )
+        return NO;
+    
+    // prepare the stepView, do not allow steps to be added during installation
+    NSMutableArray *steps = [NSMutableArray array];
+    for (TEBaseAssistant *assistant in assistants)
+        [steps addObjectsFromArray:[assistant orderedSteps]];
+    [installStepView setSteps:steps];
+    
+    // go through all assistants and choose the one with the biggest
+    // view size to be the size of the window
+    NSRect biggestRect = [window frame];
+    NSSize padding = NSMakeSize(NSWidth(biggestRect) - NSWidth([assistantBox frame]),
+                                NSHeight(biggestRect) - NSHeight([assistantBox frame]));
+    biggestRect.size = NSZeroSize;
+    
+    for (TEBaseAssistant *assistant in assistants) {
+        NSRect asRect = [[assistant view] frame];
+        if ( biggestRect.size.width < asRect.size.width )
+            biggestRect.size.width = asRect.size.width;
+        if ( biggestRect.size.height < asRect.size.height )
+            biggestRect.size.height = asRect.size.height;
+    }
+    biggestRect.size.height += padding.height;
+    biggestRect.size.width  += padding.width;
+    [window setFrame:biggestRect display:NO];
+    
+    if ( @available(macOS 10.14, *) ) {
+        [assistantBox setBorderColor:NSColor.windowFrameColor];
+        [assistantBox setFillColor:NSColor.windowBackgroundColor];
+    }
+    // run the first assistant
+    [self runAssistant:[assistants objectAtIndex:(currentAssistant = 0)] lastStep:NO];
+    [window center];
+    [window makeKeyAndOrderFront:self];
+    if ( modal ) [NSApp runModalForWindow:window];
+    return YES;
 }
 
 - (void)reset
 {
-	[window close];
-	if ( modal ) [NSApp stopModal];
-	[assistants removeAllObjects];
-	[sessionDict removeAllObjects];
-	[installStepView clearSteps];
-	[assistantBox setContentView:nil];
+    [window close];
+    if ( modal ) [NSApp stopModal];
+    [assistants removeAllObjects];
+    [sessionDict removeAllObjects];
+    [installStepView clearSteps];
+    [assistantBox setContentView:nil];
 }
 
 - (BOOL)containsAssistantOfClass:(Class)aClass
 {
-	for (TEBaseAssistant *assistant in assistants) {
-		if ( [assistant isMemberOfClass:aClass] )
-			return YES;
-	}
-	return NO;
+    for (TEBaseAssistant *assistant in assistants) {
+        if ( [assistant isMemberOfClass:aClass] )
+            return YES;
+    }
+    return NO;
 }
 
 #pragma mark -
@@ -179,52 +179,52 @@
 
 - (OSStatus)selectStep:(NSString *)stepName;
 {
-	[stepTitle setStringValue:stepName];
-	OSStatus err = [installStepView selectStep:stepName];
-	[installStepView setNeedsDisplay:YES];
-	return err;
+    [stepTitle setStringValue:stepName];
+    OSStatus err = [installStepView selectStep:stepName];
+    [installStepView setNeedsDisplay:YES];
+    return err;
 }
 
 - (void)runNextAssistant
 {
-	TEBaseAssistant *assistant = [assistants objectAtIndex:currentAssistant];
-	[[NSNotificationCenter defaultCenter] postNotificationName:TEAssistantDidFinishNotification object:assistant];
-	
-	if ( ++currentAssistant == [assistants count] ) {
-		log_debug("all assistants finished");
-		[self reset];
-		[[NSNotificationCenter defaultCenter] postNotificationName:TESetupAssistantFinishedNotification object:self];
-		return;
-	}
-	
-	[self runAssistant:[assistants objectAtIndex:currentAssistant] lastStep:NO];
+    TEBaseAssistant *assistant = [assistants objectAtIndex:currentAssistant];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TEAssistantDidFinishNotification object:assistant];
+    
+    if ( ++currentAssistant == [assistants count] ) {
+        log_debug("all assistants finished");
+        [self reset];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TESetupAssistantFinishedNotification object:self];
+        return;
+    }
+    
+    [self runAssistant:[assistants objectAtIndex:currentAssistant] lastStep:NO];
 }
 
 - (void)runPreviousAssistant
 {
-	BOOL lastStep = NO; // if this is first assistant tell it to start over from the beginning
-	
-	if ( currentAssistant > 0 ) {
-		currentAssistant--;
-		lastStep = YES;
-	}
-	
-	[self runAssistant:[assistants objectAtIndex:currentAssistant] lastStep:lastStep];
+    BOOL lastStep = NO; // if this is first assistant tell it to start over from the beginning
+    
+    if ( currentAssistant > 0 ) {
+        currentAssistant--;
+        lastStep = YES;
+    }
+    
+    [self runAssistant:[assistants objectAtIndex:currentAssistant] lastStep:lastStep];
 }
 
 - (void)insertNextAssistant:(TEBaseAssistant *)assistant
 {
-	[self insertAssistant:assistant atIndex:currentAssistant+1];
+    [self insertAssistant:assistant atIndex:currentAssistant+1];
 }
 
 - (void)setObject:(id)obj forKey:(id)key
 {
-	[sessionDict setObject:obj forKey:key];
+    [sessionDict setObject:obj forKey:key];
 }
 
 - (id)objectForKey:(id)key
 {
-	return [sessionDict objectForKey:key];
+    return [sessionDict objectForKey:key];
 }
 
 #pragma mark -
@@ -232,39 +232,39 @@
 
 - (IBAction)nextPressed:(id)sender
 {
-	[[assistants objectAtIndex:currentAssistant] nextPressed:sender];
+    [[assistants objectAtIndex:currentAssistant] nextPressed:sender];
 }
 
 - (IBAction)prevPressed:(id)sender
 {
-	[[assistants objectAtIndex:currentAssistant] prevPressed:sender];
+    [[assistants objectAtIndex:currentAssistant] prevPressed:sender];
 }
 
 - (IBAction)dismissAssistant:(id)sender
 {
-	// check to prevent windowDidClose from resulting in multiple calls to this
-	if ( [window isVisible] || [assistants count] != 0 ) {
-		log_debug("setupassistant dismissed");
-		[[NSNotificationCenter defaultCenter] postNotificationName:TESetupAssistantWasDismissedNotification object:self];
-		[self reset];
-	}
+    // check to prevent windowDidClose from resulting in multiple calls to this
+    if ( [window isVisible] || [assistants count] != 0 ) {
+        log_debug("setupassistant dismissed");
+        [[NSNotificationCenter defaultCenter] postNotificationName:TESetupAssistantWasDismissedNotification object:self];
+        [self reset];
+    }
 }
 
 #pragma mark -
 #pragma mark Accessors
 - (TEBaseAssistant *)prevAssistant
 {
-	return ( currentAssistant == 0 ) ? nil : [assistants objectAtIndex:currentAssistant-1];
+    return ( currentAssistant == 0 ) ? nil : [assistants objectAtIndex:currentAssistant-1];
 }
 
 - (TEBaseAssistant *)nextAssistant
 {
-	return ( currentAssistant+1 >= [assistants count] ) ? nil : [assistants objectAtIndex:currentAssistant+1];
+    return ( currentAssistant+1 >= [assistants count] ) ? nil : [assistants objectAtIndex:currentAssistant+1];
 }
 
 - (TEBaseAssistant *)currAssistant
 {
-	return [assistants count] > 0 ? [assistants objectAtIndex:currentAssistant] : nil;
+    return [assistants count] > 0 ? [assistants objectAtIndex:currentAssistant] : nil;
 }
 
 ACC_RETURN_M(NSWindow *, window)
@@ -279,41 +279,41 @@ ACC_RETURN_M(NSArray  *, assistants)
 @implementation TESetupAssistant (Private)
 - (void)runAssistant:(TEBaseAssistant*)assistant lastStep:(BOOL)lastStep
 {
-	NSDisableScreenUpdates();
-	
-	// reset any possible, innocent changes made from previous assisants
-	[prevButton setTitle:NSLocalizedString(@"Go Back", @"")];
-	[prevButton setTarget:self];
-	[prevButton setAction:@selector(prevPressed:)];
-	[nextButton setTitle:NSLocalizedString(@"Next", @"")];
-	[nextButton setTarget:self];
-	[nextButton setAction:@selector(nextPressed:)];
-	[prevButton setEnabled:(currentAssistant != 0)];
-	[nextButton setEnabled:YES];
-	
-	[assistantBox setContentView:[assistant view]];
-	[window makeFirstResponder:[assistant view]];
+    NSDisableScreenUpdates();
+    
+    // reset any possible, innocent changes made from previous assisants
+    [prevButton setTitle:NSLocalizedString(@"Go Back", @"")];
+    [prevButton setTarget:self];
+    [prevButton setAction:@selector(prevPressed:)];
+    [nextButton setTitle:NSLocalizedString(@"Next", @"")];
+    [nextButton setTarget:self];
+    [nextButton setAction:@selector(nextPressed:)];
+    [prevButton setEnabled:(currentAssistant != 0)];
+    [nextButton setEnabled:YES];
+    
+    [assistantBox setContentView:[assistant view]];
+    [window makeFirstResponder:[assistant view]];
     [nextButton setNextKeyView:[assistant view]];
-	[self selectStep:[[assistant orderedSteps] objectAtIndex:0]];
-	lastStep ? [assistant restart] : [assistant start];
-	NSEnableScreenUpdates();
+    [self selectStep:[[assistant orderedSteps] objectAtIndex:0]];
+    lastStep ? [assistant restart] : [assistant start];
+    NSEnableScreenUpdates();
 }
 
 - (void)insertAssistant:(TEBaseAssistant*)assistant atIndex:(NSUInteger)index
 {
-	OSStatus err;
-	if ( [assistant view] )
-	{
-		log_warn("%@ has already been prepared", [assistant assistantName]);
-	}
-	else if ( (err = [assistant prepareAssistant]) != noErr )
-	{
-		NSRunCriticalAlertPanel(@"Error", @"%@ failed to setup with error: %d. Please contact support.", @"OK",
-								nil, nil, [assistant assistantName], err);
-		return;
-	}
-	[assistants insertObject:assistant atIndex:index];
-	[assistant setParentController:self];
+    OSStatus err;
+    if ( [assistant view] )
+    {
+        log_warn("%@ has already been prepared", [assistant assistantName]);
+    }
+    else if ( (err = [assistant prepareAssistant]) != noErr )
+    {
+        NSRunCriticalAlertPanel(@"Error", @"%@ failed to setup with error: %d. Please contact support.", @"OK",
+                                nil, nil, [assistant assistantName], err);
+        return;
+    }
+    [assistants insertObject:assistant atIndex:index];
+    [assistant setParentController:self];
 }
 @end
 
